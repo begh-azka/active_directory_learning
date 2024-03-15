@@ -8,8 +8,30 @@
 6. **DNS**: Resolves an name to an IP Address.
 
 
-
+## Steps:
 - Login to the server and open Server Manager.
 - There, select computer name: We can change the name of the server and add it to a domain as well.
 - In the ethernet option, it will say IPv4 address assigned by DHCP and IPv6 enable. This is not what we need. We need to have a static IP address. Click IPv4 option and open the properties.
-- There 
+- Enter an IP like 192.13.0.10 and in DNS keep it similar, DNS can also be 127.0.0.1 which is a loopback address.
+- Go to Manage at the top right, click on Add Roles and Features.
+- Select Role Based or Feature Based installation.
+- Select your server from server pool
+- Then there will be a list of roles that we can install.
+- **Active Directory Domain Service** Role is the one that is required to create a **Domain Controller**. On clicking it, a box with more features pops up. These are tools that will be installed for remote server administration. Click Add Features.
+- In Features, no selections are needed.
+- In AD DS (Active Directory Domain Services), you get info about AD
+- Finally confirm and install.
+- This will install the binary/setup files of the role, but we still need to configure it.
+- When the wizard shows installation complete, click **Promote this server to Deployment Controller** or if you exited the wizard, go to notifications in top right.
+- Here we get three options:
+  - Add domain controller to existing domain
+  - Add a new domain to an existing domain
+  - Add a new forest
+- We will go with forest. Create a domain name (abc.xyz) and then in the functional area, keep oldest possible OS.
+- Here we are using 2016 which means all the servers in this domain would have to be 2016 or newer than that.
+- Now choose a DSRM (Directory Service Restore Mode) password. If Active Directory needs to be restored, say from maybe a backup, if you were to delete an object or anything like that, you can reboot your domain controller as you reboot. This can be different across different AD servers. It needs to be well documented for future use.
+- To reset it, use ntds utils command.
+- Once Active directory is installed, DNS will be installed as well.
+- Next, NETBIOS name will be installed. This is your domain without the extension, so abc.
+- Keep paths as default.
+- The installation can fail if administrator password has not been set. To set it run net user administrator in powershell and set a password.
