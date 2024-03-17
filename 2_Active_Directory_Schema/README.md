@@ -16,3 +16,11 @@
 
 - We can chnage our schema access to something else using GUI by right clicking Active Directory on the left and going to Operations Master.
 - We can also use cmd to do that by running **`netdom query fsmo`**
+
+## Modifying a schema
+- We can modify the schema by adding our own attributes.
+- Go to mmc -> right click on attributes -> create
+- Give a common name, object ID, Syntax (unicode string etc)
+- Now you need to associate the attribute with a class.
+- Right click a class and open its properties -> Attributes -> Add
+- 
