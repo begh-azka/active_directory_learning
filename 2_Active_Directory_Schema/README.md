@@ -13,7 +13,6 @@
 - Click on it and then click Add and ok.
 - Now we will be able to see classes and attributes. In classes, there is user. If we open its properties by right clicking, it shows all the attributes that are linked to a user.
 - Some attributes like phone numbers, names, email addresses are replicated to the global catalog while as some such as accountexpires are not replicated.
-
 - We can chnage our schema access to something else using GUI by right clicking Active Directory on the left and going to Operations Master.
 - We can also use cmd to do that by running **`netdom query fsmo`**
 
