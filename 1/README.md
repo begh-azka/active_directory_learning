@@ -35,3 +35,15 @@
 - Next, NETBIOS name will be installed. This is your domain without the extension, so abc.
 - Keep paths as default.
 - The installation can fail if administrator password has not been set. To set it run **net user administrator** in powershell and set a password.
+
+### Verify Installation was successful after reboot
+- In server manager, on the top right, is an option Tools. There will be a lot of options like DNS, Event Viewer, Active Directory Administrative Center, Group Policy etc.
+- One of them will be Active Directory Users and Computers. This will be our main area of administration.
+- Open this tool and it will take you to a new window where you will be able to see your domain (abc.xyz). Expand it and you will see options like Builtin, Computers, Domain Controllers, Foreign Security Principals, Keys, Managed Service Accounts and **Users**.
+- Event Viewer will show you logs. Go to Application and Services Logs -> Directory Service and here you will be able to see logs related to AD.
+- In DNS tool, if we go to server-name -> Forward Lookup Zones -> _msdcs.domain-name -> dc -> _tcp, we will find two records: Kerberos and Ldap. Both of these are Service Location (SRV).All of our domain controllers will have them.
+- Go to Run and type \\server-name and it should show two folders that are shared.
+  - netlogin
+  - sysvol
+- The **netlogon** just runs log on service that authenticates when users actually attempt to login.
+- **sysvol** folder contains a folder with the same name as our domain. Inside there are Policies and scripts.
