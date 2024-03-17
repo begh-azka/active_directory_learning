@@ -1,25 +1,10 @@
 # Active Directory
-### How to install AD using Powershell?
+## Basic Active Directory Terms
 
-**Commands: To run as admin**
+1. **Domain**: Collection of Objects (user accounts, computers, groups and more)
+2. **Domain Controller**: Server with Active Directory installed.
+3. **Tree**: Collection of Domains (RTS.local -> Parent Domain and abc.RTS.local -> Child Domain)
+4. **Forest**: Collection of Trees (Two or more Trees combined)
+5. **Global Catalog**: Used in an address book while using MS Outlook.
+6. **DNS**: Resolves an name to an IP Address.
 
-1. Enable ad-domain-services Role
-   ```ps1
-   install-WindowsFeature ad-domain-services
-   ```
-2. List all the Roles
-   ```ps1
-   Get-WindowsFeature
-   ```
-3. To promote the server to be a domain controller, SiteName by default 
-   ```ps1
-   Install-ADDSDomainController -DomainName abc.xyz -SiteName default-first-site-name -InstallDns
-   ```
-4. To install Active Directory Admin Tools using PowerShell -rsat (Remote Server Administration Tools)
-   ```ps1
-   install-windowsfeature rsat-role-tools
-   ```
-5. To list RSAT tools
-   ```ps1
-   Get-WindowsFeature -rsat*
-   ```
