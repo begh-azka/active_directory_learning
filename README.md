@@ -15,4 +15,11 @@
    ```ps1
    Install-ADDSDomainController -DomainName abc.xyz -SiteName default-first-site-name -InstallDns
    ```
-
+4. To install Active Directory Admin Tools using PowerShell -rsat (Remote Server Administration Tools)
+   ```ps1
+   install-windowsfeature rsat-role-tools
+   ```
+5. To list RSAT tools
+   ```ps1
+   Get-WindowsFeature -rsat*
+   ```
