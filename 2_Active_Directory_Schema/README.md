@@ -1,7 +1,7 @@
 # Active Directory Schema
-- Defines object classes
+- Defines object **classes**
   - Users, computers, groups
-- Defines attributes
+- Defines **attributes**
   - Telephone numbers, address, name
     
 ## Schema Access
@@ -17,10 +17,10 @@
 - We can chnage our schema access to something else using GUI by right clicking Active Directory on the left and going to Operations Master.
 - We can also use cmd to do that by running **`netdom query fsmo`**
 
-## Modifying a schema
+## Modifying a Schema
 - We can modify the schema by adding our own attributes.
 - Go to mmc -> right click on attributes -> create
 - Give a common name, object ID, Syntax (unicode string etc)
 - Now you need to associate the attribute with a class.
 - Right click a class and open its properties -> Attributes -> Add
-- 
+- Now when we open Active Directory Users and Computers -> View -> Advanced Features, then open a user's properties, there will be a tab **Attribute Editor**. But we won't be able to see the new attributes if we have not restarted the Active Directory Service or the whole server.
