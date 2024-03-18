@@ -15,3 +15,11 @@
 - Go to AD Users and Computers and there right click on Users. Click Create and fill the information.
 
 ### Domain Join
+- To join a server to this domain make sure you change its network settings:
+  - Right click network icon on taskbar -> go to network -> ethernet -> ipv4 -> static ip
+  - Before you enter static IP, open cmd and type **ipconfig/all** and copy IPv4 address from there along with subnet mask and default gateway.
+  - For DNS server, paste the IPv4 address of Domain Controller server. Validate the settings.
+- Right click windows icon, and go to system -> Click change settings
+- There click on domain radio button. Enter your domain. If network settings are correct, it will prompt you to enter credentials.
+- Enter the credentials of administrator of Domain Controller.
+- It should give you a success message.
