@@ -1,10 +1,11 @@
 # AD Installation
+
 ## Steps to Install AD on a Windows Server:
 - Login to the server and open Server Manager.
 - There, select computer name: We can change the name of the server and add it to a domain as well.
-- In the ethernet option, it will say IPv4 address assigned by DHCP and IPv6 enable. This is not what we need. We need to have a static IP address. Click IPv4 option and open the properties. (Optional)
-- Enter an IP like 192.13.0.10 and in DNS keep it similar, DNS can also be 127.0.0.1 which is a loopback address. (Optional)
-- Go to Manage at the top right, click on **Add Roles and Features**.
+- In the ethernet option, it will say IPv4 address assigned by DHCP and IPv6 enable. This is not what we need. We need to have a static IP address. Click IPv4 option and open the properties. 
+- Open cmd and run **ipconfig/all**. Copy IPv4 address, subnet mask and default gateway from cmd and paste it in IPv4 settings. For DNS, enter loopback address 128.0.0.1. Validate.
+- Next, Go to Manage at the top right, click on **Add Roles and Features**.
 - Select Role Based or Feature Based installation. Here we need Role.
 - Select your server from server pool.
 - Then there will be a list of roles that we can install.
@@ -25,19 +26,19 @@
 - Once Active directory is installed, **DNS** will be installed as well.
 - Next, NETBIOS name will be installed. This is your domain without the extension, so abc.
 - Keep paths as default.
-- The installation can fail if administrator password has not been set. To set it run **net user administrator** in powershell and set a password.
-
-### Verify Installation was successful after reboot
+- The installation can fail if administrator password has not been set. To set it run **net user administrator password/ADD** in admin powershell.
+  
+### Verify Installation was Successful after Reboot
 - In server manager, on the top right, is an option Tools. There will be a lot of options like DNS, Event Viewer, Active Directory Administrative Center, Group Policy etc.
 - One of them will be Active Directory Users and Computers. This will be our main area of administration.
 - Open this tool and it will take you to a new window where you will be able to see your domain (abc.xyz). Expand it and you will see options like Builtin, Computers, Domain Controllers, Foreign Security Principals, Keys, Managed Service Accounts and **Users**.
 - Event Viewer will show you logs. Go to Application and Services Logs -> Directory Service and here you will be able to see logs related to AD.
 - In DNS tool, if we go to server-name -> Forward Lookup Zones -> _msdcs.domain-name -> dc -> _tcp, we will find two records: Kerberos and Ldap. Both of these are Service Location (SRV).All of our domain controllers will have them.
-- Go to Run and type \\server-name and it should show two shares.
+- Go to Run and type **\\server-name** and it should show two shares:
   - netlogin
   - sysvol
 - The **netlogon** just runs log on service that authenticates when users actually attempt to login.
-- **sysvol** folder contains a folder with the same name as our domain. Inside there are Policies and scripts. Scripts will contain any log on , log off, shut down scripts. 
+- **sysvol** folder contains a folder with the same name as our domain. Inside there are Policies and scripts. Scripts will contain any logon , log off, shut down scripts. 
 
 ## Install AD using Powershell
 
