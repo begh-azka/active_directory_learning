@@ -83,4 +83,11 @@ It is of the type builtinDomain. It contains Security Groups that are required f
 - The other way is to right click user's account in AD and click on Reset Password. Here we also get an option to Unlock account but you would also need to reset the user's password.
 
 ## Groups and Memberships
-
+- Right click on the OU you created or Users container, click on new -> group.
+- To create a Group, give it a name and then choose its scope: 
+  - **Domain Local**: It will be valid in your domain only.
+  - **Global**: It can be accessed from another domain if there is a trust established between the two.
+  - **Universal**: Can be accessed from other forests that trust your domain. 
+- Choose the Group Type:
+  - **Security:** Used to specify permissions within your Active Directory domain. Example: permissions to access file shares, prnters etc can be given to a group and then to users who are part of it.
+  - **Distribution:** Used as an email distribution list. Users, who are a part of this DL, will get an email when one is sent to this DL's email address.
