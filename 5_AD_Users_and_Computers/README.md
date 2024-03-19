@@ -58,7 +58,10 @@
    - For disabled users, there is a downward arrow in an icon.
      
 ### Builtin
-It is of the type builtinDomain. It contains Security Groups that are required for your domain to operate. You cannot delete builtin objects.
+- It is of the type builtinDomain. It contains Security Groups that are required for your domain to operate. You cannot delete builtin objects.
+- Go to builtin and there we can see multiple domain local Security Groups: Administrators, Guests, Remote Desktop users, Users etc.
+- Open their properties to check out what permissions they bestow upon users and other accounts added to them.
+- Remote Desktop Users: Members in this group are granted the right to logon remotely.
 
 ### Organizational Units
 - Referred to as OUs, are used to organize and separate objects.
@@ -91,3 +94,13 @@ It is of the type builtinDomain. It contains Security Groups that are required f
 - Choose the Group Type:
   - **Security:** Used to specify permissions within your Active Directory domain. Example: permissions to access file shares, prnters etc can be given to a group and then to users who are part of it.
   - **Distribution:** Used as an email distribution list. Users, who are a part of this DL, will get an email when one is sent to this DL's email address.
+- When the group is created, it is visible in Users.
+- Open its properties, we can add metadata to it. There are two important tabs here: Members and Member Of
+- Add a user to this group in Members tab.
+- With Members of tab, we can add this group to other groups.
+
+## Disabling Accounts
+- In organizations where you need to offboard employees, you disable their accounts first so they can no longer logon.
+- Later after a specified period of time, these accounts are deleted.
+- Disable accounts by right clicking and selecting Disable Account.
+- To make it clear that these are disabled accounts, you should create another OU named Disabled Users within the current OU and drag the disabled user from Users to this OU.
