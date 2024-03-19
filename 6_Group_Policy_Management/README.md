@@ -62,4 +62,6 @@ GPOs are applied recursively and this means that any setting that is applied to 
   - **User Configuration**
 - Both contain two folders:
   - **Policies**
-  - **Preferences**   
+  - **Preferences**
+- Policies contains about 2500 different settings
+  - Administrative Templtaes -> System -> Device Installation -> Device Installation Restrictions  -> Enable or Disable any policy
