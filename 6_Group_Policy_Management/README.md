@@ -11,7 +11,7 @@
   - Give specific or all users a specific Desktop background
   - Deploy software to computers within our domain.
 
-## How does Group Policy Work?
+### How does Group Policy Work?
 - Group Policy works by applying GPOs or Group Policy Objects to the OU structure that you have created.
 - A GPO contains separate configuration settings for both computers and users.
 - When a GPO is applied to an OU, the settings configured in the GPO are applied to the users and the computers that are within that OU.
@@ -85,7 +85,17 @@ GPOs are applied recursively and this means that any setting that is applied to 
   - User Configuration       (assume...applied last)   (Most Important)
 - The setting that is applied last wins!
 
-## Blocked Inheritance
+### Blocked Inheritance
 - If an Organizational Unit has enabled Block Inheritance then all the policies that are at above level (higher than OU) will be blocked except Enforced.
 - Only GPOs inside the OU will apply.
 - We can enable it by right clicking an OU in Group policy Management.
+
+### Security Filtering
+- It allows us to apply group policy to groups or users specifically.
+
+### WMI (Windows Management Instrumentation) Filtering
+- It lets us create a script in Windows Query Language (WQL).
+- A WMI Filter lets us evaluate software and hardware on a computer before a setting applies.
+- Example: If we wanted to apply a setting to a computer only when it had 50 gb of RAM and ran windows 10, then WMI Filter would be used.
+
+## Troubleshooting Group Policy Issues
