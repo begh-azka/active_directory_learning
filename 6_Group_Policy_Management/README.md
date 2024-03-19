@@ -28,7 +28,8 @@ GPOs are applied recursively and this means that any setting that is applied to 
   - **Domains**: Contains all the domains in our forest. 
   - **Sites**: Contains all of your sites that you may have configured through Active Directory sites and services. (This is used when you have servers that are physically located in different locations.)
   - **Group Policy Modeling** and **Group Policy Results**: Tools used to troubleshoot any group policy issues.
-
+- GPOs can be applied to local (local computer), Sites, Domains and OUs.
+  
 ### Folders
 - In Domains, there is our domain and inside it:
   - Default Domain Policy: This is a GPO that comes by default when a new domain is created.
@@ -50,7 +51,7 @@ GPOs are applied recursively and this means that any setting that is applied to 
   - This way, we can also link one existing GPO to multiple OUs.
 - We can edit a GPO, change it to enforced (it will take precedence over other GPOs)
 - We can also check whether link is enabled or not by right clicking.
-- Renaming a link will change GPO's name as well.
+- Renaming or Deleting a link will rename/delete GPO's name as well.
 - GPO has multiple tabs like Scope, Details, Settings and Delegation. In Settings, we can set user or computer level configuration.
 - In Delegation, we can add or remove users and give them permissons such as edit, read etc. to the GPOs (Rarely Used).
 - **When we link a GPO to an OU, the policy applies to all the users or computers within that OU.**
@@ -63,5 +64,28 @@ GPOs are applied recursively and this means that any setting that is applied to 
 - Both contain two folders:
   - **Policies**
   - **Preferences**
-- Policies contains about 2500 different settings
-  - Administrative Templtaes -> System -> Device Installation -> Device Installation Restrictions  -> Enable or Disable any policy
+- Policies contains about 2500 different settings.
+  - **Example**: Administrative Templates -> System -> Device Installation -> Device Installation Restrictions  -> Enable or Disable any policy
+- When we enable or disable a setting inside a policy, it can be seen in policy management -> OU -> GPO -> Settings -> Computer or user (whichever you applied) 
+
+### Group Policy Precedence
+- Below is the order of precedence of Group Policy from lowest to highest (**LSDOE**):
+  - Local (gpedit.msc in run will open local policies)
+  - Sites
+  - Domain
+  - Organizational Unit
+  - Sub-Organizational Unit
+  - Enforced GPOs
+    
+- Any policy applied to an OU will take precedence over others. So if some setting is disabled in a policy for OU and the same policy's setting is enabled in Domain, then OU one will take higher priority.
+- Last applied policy always wins!
+
+- **Computer vs User:**
+  - Computer Configuration   (assume...applied first)  (Least Important)
+  - User Configuration       (assume...applied last)   (Most Important)
+- The setting that is applied last wins!
+
+## Blocked Inheritance
+- If an Organizational Unit has enabled Block Inheritance then all the policies that are at above level (higher than OU) will be blocked except Enforced.
+- Only GPOs inside the OU will apply.
+- We can enable it by right clicking an OU in Group policy Management.
