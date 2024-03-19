@@ -1,0 +1,11 @@
+# Group Policy Management
+- A tool used by IT Professionals (System Administrators, Help Desk, etc.) to Deploy Configuration Changes in AD quicky and easily to:
+  - Users
+  - Computers
+- It is easy because we can make configurations in Group Policy **ONCE** and configure 1000s of computers.
+- We can implement security configurations across our domain quicky and easily with the help of Group Policy.
+- We can do things like
+  - Restrict certain users from logging in to certain computers
+  - Allow certain users to access some files
+  - Give specific or all users a specific Desktop background
+  - Deploy software to computers within our domain.
