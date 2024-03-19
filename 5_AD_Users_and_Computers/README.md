@@ -1,8 +1,7 @@
 # Active Directory Users and Computers
 
-- Also known as Active Directory or AD
 - Found on any Windows Server with AD Domain Service
-- It is a Database (or directory) that stores:
+- AD is a Database (or directory) that stores:
   - User Accounts
   - Computers
   - Printers
@@ -31,9 +30,10 @@
 - Reset passwords on individual computers
 
 ## Organizational Units and Containers
+
 ### Containers
 - Containers are structural objects that are included by default within Active Directory.
-- The difference between OUs and containers is that you cannot apply Group Policy Objects (GPO) to containers.
+- The difference between OUs and containers is that you cannot apply **Group Policy Objects** (GPO) to containers.
 - You cannot create a container within AD, although you could use ADSI edit to create a container if you needed it (Like when setting up SCCM).
 
 1. **Computer Container**:
@@ -47,7 +47,7 @@
    - Only used when we have established trust between two domains.
      
 3. **Managed Service Accounts (MSA)**:
-   - Holds accounts thatt are used to operate applications or services that run on your servers or your workstations.
+   - Holds accounts that are used to operate applications or services that run on your servers or your workstations.
    - Non-human accounts.
    - You do not create passwords for these accounts, they are handled automatically.
    - Rotating passwords for service accounts when they expire can be an issue for administrators. That is where MSAs help.
@@ -69,7 +69,7 @@ It is of the type builtinDomain. It contains Security Groups that are required f
 - You can create your own OU and create child OUs such as Computers, Users, Groups etc.
 
 ## Searching for Objects in Active Directory
-- Click Find icon at the top and theN we can filter out groups and other objects.
+- Click **Find** icon at the top and then we can filter out groups and other objects.
 - We can also perform operations on objects at the same time or use wildcards to filter.
 
 ## Resetting User Password
@@ -77,6 +77,10 @@ It is of the type builtinDomain. It contains Security Groups that are required f
 - As an added security, if there are multiple users with same name, then it is best to ask them their **logon** name (fname.lname@domain).
 - You can use **advanced** tab and choose Users -> Logon name and enter the name the user gave you. This will quickly find the user and you can safely reset the password.
 - Reset by right clicking on the user's name and then clicking Reset Password.
+  
+### Unlock an Account
+- Sometimes accounts get locked. To unlock, an admin can go to the user's account in AD and click on properties and in Account tab, it will show whether or not the user is locked out of their account. In case they are, click on **Unlock account** checkbox.
+- The other way is to right click user's account in AD and click on Reset Password. Here we also get an option to Unlock account but you would also need to reset the user's password.
 
-## 
-- 
+## Groups and Memberships
+
