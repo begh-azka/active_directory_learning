@@ -10,9 +10,11 @@
 - Now go to Group Policy Management, create a GPO at domain level or your OU. Name it Group-A-mapped-drive and so on.
 - Edit and go to User Configuration -> Preferences -> Windows Settings -> Drive Maps
 - Right click and select New -> Mapped Drive
-- Location: Share-A or Share-B
+- Location: Drive-A or Drive-B
 - Check Reconnect box. So that every time user logs in, it is available.
 - Drive Letter: Use First Available Starting at **A**
 - Go to Scope tab of the same GPO and in **Security Filtering**, remove Authenticated Users and Add Group-A.
 - This Security Filtering prevent wrong users from accessing wrong file shares.
 - Finally, give Authenticated Users Read only permission in Delegation tab of each GPO.
+- Login as User-A, go to Network and Drive-A should be visible.
+- Login as User-B, go to Network in File Explorer and Drive-B should be visible.
