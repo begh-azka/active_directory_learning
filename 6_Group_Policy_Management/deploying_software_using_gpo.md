@@ -3,7 +3,7 @@
 - Download an msi application from internet.
 - Copy it from there to a new shared folder "Applications"
 - Then in GPO, create a new policy object named "App-Deploy-FireFox", FireFox is the name of the app that we need to deploy.
-- Edit and go to Computer Configuartion Software Settings -> Software Installation -> Right click -> New -> Package -> Open the **UNC/Network path** (\\AD-SERVER-2\Applications) instead of the local path.
+- Edit and go to Computer Configuartion Software Settings -> Software Installation -> Right click -> New -> Package -> Open the **UNC/Network path** ('\\AD-SERVER-2\Applications') instead of the local path.
 - We will get three options to deploy:
   1. Published: Only Available for User Configuration. Gives the user to install the software first.
   2. Assigned: To deploy the application without modification.
