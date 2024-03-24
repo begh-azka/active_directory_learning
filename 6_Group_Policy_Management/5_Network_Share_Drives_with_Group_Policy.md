@@ -15,4 +15,4 @@
 - Drive Letter: Use First Available Starting at **A**
 - Go to Scope tab of the same GPO and in **Security Filtering**, remove Authenticated Users and Add Group-A.
 - This Security Filtering prevent wrong users from accessing wrong file shares.
-- 
+- Finally, give Authenticated Users Read only permission in Delegation tab of each GPO.
