@@ -33,7 +33,7 @@
 - Open this tool and it will take you to a new window where you will be able to see your domain (abc.xyz). Expand it and you will see options like Builtin, Computers, Domain Controllers, Foreign Security Principals, Keys, Managed Service Accounts and **Users**.
 - Event Viewer will show you logs. Go to Application and Services Logs -> Directory Service and here you will be able to see logs related to AD.
 - In DNS tool, if we go to server-name -> Forward Lookup Zones -> _msdcs.domain-name -> dc -> _tcp, we will find two records: Kerberos and Ldap. Both of these are Service Location (SRV). All of our domain controllers will have them.
-- Go to Run and type **\\server-name** and it should show two shares:
+- Go to Run and type **\\\server-name** and it should show two shares:
   - netlogin
   - sysvol
 - The **netlogon** just runs log on service that authenticates when users actually attempt to login.
