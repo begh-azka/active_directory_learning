@@ -99,3 +99,11 @@ GPOs are applied recursively and this means that any setting that is applied to 
 - Example: If we wanted to apply a setting to a computer only when it had 50 gb of RAM and ran windows 10, then WMI Filter would be used.
 
 ## Troubleshooting Group Policy Issues
+- Enter **"rsop.msc"** in run. It will open **Resultant Set of Policies** of the currently logged in user.
+- This looks similar to Group Policy Management tool.
+- This can be used to check what is going on with user's policies.
+  
+### CMD
+- Actual troubleshooting happens in command prompt.
+- Type **`gpresult /r`** and it prints output of all the policies that are applied to current user. It also shows which policy objects are applied along with what groups user is a part of.
+- If you updated a policy at domain or any other level and you want to check updated **Resultant Set of Policies**, run **`gpupdate`**
