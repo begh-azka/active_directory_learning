@@ -1,4 +1,4 @@
-# Deploying a Custom Desktop Background to your domain with a GPO
+# Deploying a Custom Desktop Background to your Domain with a GPO
 ## Create a File Share
 1. This will be a user configuration.
 2. Create a File Share, put the background there and make sure all authenticated users can access the share.
