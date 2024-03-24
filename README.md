@@ -15,3 +15,9 @@
 - Active Directory Sites and Services
 - Active Directory Domains and Trusts
 - Active Directory Schema
+
+
+## Shortcuts
+- To open Active Directory Users and Computers (ADUC): **dsa.msc**
+- To open Resultant set of Policies: **rsop.msc**
+- 
