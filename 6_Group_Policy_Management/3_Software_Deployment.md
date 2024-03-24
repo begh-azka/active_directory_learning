@@ -1,4 +1,4 @@
-# Deployment using GPO
+# Deployment of a Software using GPO
 - Application Deployment can be done on a computer or for a user. For user, if they login to a different computer, all the applications will b
 - Download an msi application from internet.
 - Copy it from there to a new shared folder "Applications"
