@@ -1,4 +1,4 @@
-# Configuring Roaming Profiles for Users with GPO
+# Configuring Roaming Profiles for Users 
 
 - Go to Server Manager and on the left side is an option **File and Storage Services**.
 - Open Shares.
