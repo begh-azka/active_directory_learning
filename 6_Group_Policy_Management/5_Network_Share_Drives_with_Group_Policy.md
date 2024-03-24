@@ -6,7 +6,7 @@
 - In file manager, at the top, click **Computer** and then click **Map Network Drive**
 - But instead of doing it here, we will do it automatically with Active Directory.
 - Right click your OU or your domain (if you want), click New and select **Shared Folder**
-- Give it a name (Share-A) and in network path paste Folder-A's path and so on.
+- Give it a name (Drive-A) and in network path paste Folder-A's path and same for Folder-B.
 - Now go to Group Policy Management, create a GPO at domain level or your OU. Name it Group-A-mapped-drive and so on.
 - Edit and go to User Configuration -> Preferences -> Windows Settings -> Drive Maps
 - Right click and select New -> Mapped Drive
