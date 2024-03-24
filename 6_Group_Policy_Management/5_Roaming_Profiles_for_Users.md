@@ -28,5 +28,5 @@
 - You can choose where these permissions apply. Here it should apply to only this folder. Same for Administrator.
 - Finally, create this share.
 - **Now go back to ADUC and open properties of the group and open its users one by one and in Properties -> Profile, enter the Network Path of the file share (\\\server-name\folder$\%username%).**
-- Close and login with this userid on a different member server. Next search for User Profiles and there we will see this user listed as **Roaming**.
+- Close and login with this userid on a different member server. Next search for User Profiles and there we will see this user listed as **Roaming**. All the other users will be listed as Local.
 - If we create a folder on Desktop and a file inside it and the sign out and login to a different server with the same id, we will be able to see our folder right there on the desktop even though we created it on other server.
