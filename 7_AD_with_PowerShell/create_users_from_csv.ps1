@@ -2,21 +2,21 @@
 Import-Module ActiveDirectory
 
 # Path of the csv File with User Details
-$filePath      = "C:\Users\azka.aslam\Desktop\users-block - Sheet1.csv"
+$filePath       = "C:\Users\azka.aslam\Desktop\users-block - Sheet1.csv"
 
 # Import CSV as an Array
-$usersAll      = Import-Csv $filePath
+$usersAll       = Import-Csv $filePath
 
 # Variable
-$password      =  Read-Host -Prompt "Enter a Strong Password"
+$password       =  Read-Host -Prompt "Enter a Strong Password"
 
 # Complete an Action for each User in the csv file
 ForEach ($user in $usersAll) {
 
 # Variables
-$emailAddress     =  $user.'Email Address'
-$logonName     =  "$emailAddress".Replace("@gmail.com", "").ToLower()
-
+$emailAddress   =  $user.'Email Address'
+$logonName      =  "$emailAddress".Replace("@gmail.com", "").ToLower()
+ 
 # Calling each User
 New-ADUser `
     -Name ($user.'First Name' + " " + $user.'Last Name') `
