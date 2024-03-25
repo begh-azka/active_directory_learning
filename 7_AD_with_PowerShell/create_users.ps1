@@ -2,22 +2,29 @@
 Import-Module ActiveDirectory
 
 # Prompt User for Variables
-$firstName     =  Read-Host -Prompt "Enter the User's First Name"
-$lastName      =  Read-Host -Prompt "Enter the User's Last Name"
-$displayName   =  Read-Host -Prompt "Enter User's Display Name"
-$password      =  Read-Host -Prompt "Enter a Strong Password (Upper Case, Number and a Special Character. Minimum Length should be 10)"
-$emailAddr     =  Read-Host -Prompt "Enter Email Address"
+$firstName     =  Read-Host -Prompt "First Name: "
+$lastName      =  Read-Host -Prompt "Last Name: "
+$userName      =  ("$firstName" + " " + "$lastName")
+$displayName   =  Read-Host -Prompt "Display Name: "
+$password      =  Read-Host -Prompt "Enter a Strong Password (Length 10): "
+$emailAddr     =  Read-Host -Prompt "Email Address: "
 $logonName     =  "$emailAddr".Replace("@gmail.com", "").ToLower()
 
+# Check if User Name Exists
+if (Get-ADUser -F {Name -eq $userName}) {
+    Write-Warning "Username already exists. Please choose a different Name."
+ }
 # Create User
-New-ADUser `
-    -Name "$firstName $lastName" `
-    -GivenName "$firstName" `
-    -Surname "$lastName" `
-    -UserPrincipalName "$logonName@azka.local" `
-    -AccountPassword (ConvertTo-SecureString "$password" -AsPlainText -Force) `
-    -Path "OU=Domain Users, OU=azka, DC=azka, DC=local" `
-    -Enabled 1 `
-    -DisplayName "$displayName" `
-    -SamAccountName "$logonName" `
-    -EmailAddress "$emailAddr" 
+else {
+    New-ADUser `
+      -Name "$userName" `
+      -GivenName "$firstName" `
+      -Surname "$lastName" `
+      -UserPrincipalName "$logonName@azka.local" `
+      -AccountPassword (ConvertTo-SecureString "$password" -AsPlainText -Force) `
+      -Path "OU=Domain Users, OU=azka, DC=azka, DC=local" `
+      -Enabled 1 `
+      -DisplayName "$displayName" `
+      -SamAccountName "$logonName" `
+      -EmailAddress "$emailAddr" 
+}
