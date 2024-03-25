@@ -55,7 +55,7 @@ Search-ADAccount -AccountDisabled | Select-Object Name
 ```ps1
 Set-ADUser "azka" -ProfilePath "\\\server-name\folder"
 ```
-### To Update Profile Path of Multiple Raoming Users that are Part of a Roaming-Group
+### To Update Profile Path of Multiple Roaming Users that are Part of a Group
 ```ps1
 # Import Active directory Module
 Import-Module ActiveDirectory
@@ -67,4 +67,20 @@ Get-ADGroupMember 'Group-A' |
      # Instead of writing "\\\ad-server-2\Share-A\%username%" we use + and the user name (same as SamAccountName)
      Set-ADUser -Identity $_.SamAccountName -ProfilePath ("\\\ad-server-2\Share-A\" + $_.SamAccountName)
    }
+```
+### Creating User Accounts
+```ps1
+# Import Active directory Module
+Import-Module ActiveDirectory
+
+# Create user
+New-ADUser `
+    -Name "Bradley Cooper" `
+    -GivenName "Bradley" `
+    -Surname "Cooper" `
+    -UserPrincipalName "Bradley Cooper" `
+    -AccountPassword (ConvertTo-SecureString "password" -AsPlainText -Force) `
+    -Path "OU=Domain Users, OU=azka, DC=azka, DC=local" `
+    -Enabled 1 `
+    -DisplayName "Brad Cooper"
 ```
