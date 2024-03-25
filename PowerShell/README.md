@@ -16,7 +16,7 @@ Get-ADUser -Identity 'Administrator'
 ### To Filter Results Based on Certain Attributes
 ```ps1
 Get-ADUser -Filter {Name -eq 'Administrator'}
-Get-ADUser -Filter {SamAccountName -eq 'Administrator'}
+Get-ADUser -Filter {SamAccountName -eq 'begh.azka'}
 ```
 ### To Print Extra Attributes Than What is Printed by above Commands
 ```ps1
@@ -41,7 +41,7 @@ Get-ADUser -Filter * -SearchBase "OU=Domain Users, OU=azka, DC=azka, DC=local" |
 ```
 ### To List Users in a Specific Group along with their Attributes
 ```ps1
-Get-ADGroupMember 'Group-A' | Select-object Name, DistinguishedName
+Get-ADGroupMember 'Group-A' | Select-Object Name, DistinguishedName
 ```
 ### To Export a Large List of Users and their Attributes to a csv File
 ```ps1
@@ -53,7 +53,7 @@ Search-ADAccount -AccountDisabled | Select-Object Name
 ```
 ### To Update Profile Path of a Roaming User
 ```ps1
-Set-ADUser "azka" -ProfilePath "\\\server-name\folder"
+Set-ADUser "azka" -ProfilePath "\\server-name\folder"
 ```
 ### To Update Profile Path of Multiple Roaming Users that are Part of a Group
 ```ps1
@@ -64,8 +64,8 @@ Get-ADGroupMember 'Group-A' |
    # Loop through each user
    ForEach-Object {
      # Update for each User. SamAccountName is an attribute of the user.
-     # Instead of writing "\\\ad-server-2\Share-A\%username%" we use + and the user name (same as SamAccountName)
-     Set-ADUser -Identity $_.SamAccountName -ProfilePath ("\\\ad-server-2\Share-A\" + $_.SamAccountName)
+     # Instead of writing "\\ad-server-2\Share-A\%username%" we use + and the user name (same as SamAccountName)
+     Set-ADUser -Identity $_.SamAccountName -ProfilePath ("\\ad-server-2\Share-A\" + $_.SamAccountName)
    }
 ```
 ### Creating User Accounts
