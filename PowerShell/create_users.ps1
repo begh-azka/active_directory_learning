@@ -7,7 +7,7 @@ $lastName      =  Read-Host -Prompt "Enter the User's Last Name"
 $displayName   =  Read-Host -Prompt "Enter User's Display Name"
 $password      =  Read-Host -Prompt "Enter a Strong Password (Upper Case, Number and a Special Character. Minimum Length should be 10)"
 $emailAddr     =  Read-Host -Prompt "Enter Email Address"
-$logonName     =  "$emailAddr".Replace("@gmail.com", "")
+$logonName     =  "$emailAddr".Replace("@gmail.com", "").ToLower()
 
 # Create User
 New-ADUser `
@@ -19,6 +19,5 @@ New-ADUser `
     -Path "OU=Domain Users, OU=azka, DC=azka, DC=local" `
     -Enabled 1 `
     -DisplayName "$displayName" `
-    # Domain\logonName
     -SamAccountName "$logonName"
- 
+  
