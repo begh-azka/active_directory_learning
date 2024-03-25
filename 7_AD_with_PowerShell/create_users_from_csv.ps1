@@ -14,8 +14,8 @@ $password      =  Read-Host -Prompt "Enter a Strong Password"
 ForEach ($user in $usersAll) {
 
 # Variables
-$emailAddr     =  $user.'Email Address'
-$logonName     =  "$emailAddr".Replace("@gmail.com", "").ToLower()
+$emailAddress     =  $user.'Email Address'
+$logonName     =  "$emailAddress".Replace("@gmail.com", "").ToLower()
 
 # Calling each User
 New-ADUser `
@@ -28,6 +28,6 @@ New-ADUser `
     -DisplayName $user.'Display Name' `
     -SamAccountName "$logonName" `
     -EmailAddress $user.'Email Address' `
-    -Enabled 1 `
+    -Enabled ([System.Convert]::ToBoolean($user.Enabled))`
     -ChangePasswordAtLogon 1
 }
