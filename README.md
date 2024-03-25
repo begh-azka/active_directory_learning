@@ -20,4 +20,4 @@
 ## Shortcuts
 - To open Active Directory Users and Computers (ADUC): **dsa.msc**
 - To open Resultant set of Policies: **rsop.msc**
-- Group Policy Management **gpedit.msc**
+- Local Group Policy Management **gpedit.msc**
