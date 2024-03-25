@@ -26,4 +26,24 @@ Get-ADUser -Identity 'Administrator' -Properties Description
 ```ps1
 Set-ADUser "azka.aslam" -EmailAddress "amicable@gmail.com"
 ```
-### 
+### To List All AD Users (Limit 100)
+```ps1
+Get-ADUser -Filter * -ResultSetSize 100
+```
+### To List specific Attributes of AD Users (Limit 100)
+```ps1
+ Get-ADUser -Filter * -ResultSetSize 100 | Select-Object Name, UserPrincipalName, Enabled, lastLogon
+```
+### To List Users in a Specific OU
+The Value inside SearchBase comes from **OU -> Properties -> Attributes Editor -> DistinguishedName**
+```ps1
+Get-ADUser -Filter * -SearchBase "OU=Domain Users, OU=azka, DC=azka, DC=local" | Select-Object Name
+```
+### To List Users in a Specific Group along with their Attributes
+```ps1
+Get-ADGroupMember 'Group-A' | Select-object Name, DistinguishedName
+```
+### To Export a Large List of Users and their Attributes to a csv File
+```ps1
+Get-ADGroupMember 'Group-B' | Select-Object Name, DistinguishedName | Export-Csv "C:\Users\azka.aslam\Desktop\myusers.csv"
+```
