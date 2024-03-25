@@ -1,12 +1,12 @@
 # Configuring Windows Firewall with Group Policy
 - Go to **Computer Configuration -> Policies -> Windows Settings -> Security Settings -> Windows Firewall with Advanced Security -> Windows Firewall with Advanced Security - LDAP**
-- Here choose Inbound or Outbound Rule
-- Then, you can choose which type of rule we would like to create (Program/Port/Custom/Predefined)
+- Here choose Inbound or Outbound Rule.
+- Then, you can choose which type of rule we would like to create (Program/Port/Custom/Predefined).
 - Ports can be opened.
 - Choose which users can be authorized to send traffic or any exceptions to the rule.
 - You can also choose Authorized Computers and any exceptions.
-- In Profile, choose where the rules apply (Domain/Private/Public)
+- In Profile, choose where the rules apply (Domain/Private/Public).
 - Then give the rule a name.
-- After applying, enter **`gpupdate /force`**
-- Open RSOP.msc and go to Computer Configuration -> Administrative Settings -> Extra Registry Settings
+- After applying, enter **`gpupdate /force`**.
+- Open RSOP.msc and go to **Computer Configuration -> Administrative Settings -> Extra Registry Settings**.
 - There we can see the settings that are being applied.
