@@ -73,7 +73,7 @@ Get-ADGroupMember 'Group-A' |
 # Import Active directory Module
 Import-Module ActiveDirectory
 
-# Create user
+# Create User
 New-ADUser `
     -Name "Bradley Cooper" `
     -GivenName "Bradley" `
@@ -84,3 +84,6 @@ New-ADUser `
     -Enabled 1 `
     -DisplayName "Brad Cooper"
 ```
+Here we have not mentioned -ChangePasswordAtLogon 1, so it is disabled by default
+
+### 
