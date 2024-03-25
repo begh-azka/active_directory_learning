@@ -47,3 +47,24 @@ Get-ADGroupMember 'Group-A' | Select-object Name, DistinguishedName
 ```ps1
 Get-ADGroupMember 'Group-B' | Select-Object Name, DistinguishedName | Export-Csv "C:\Users\azka.aslam\Desktop\myusers.csv"
 ```
+### To List All the Locked Accounts
+```ps1
+Search-ADAccount -AccountDisabled | Select-Object Name 
+```
+### To Update Profile Path of a Roaming User
+```ps1
+Set-ADUser "azka" -ProfilePath "\\\server-name\folder"
+```
+### To Update Profile Path of Multiple Raoming Users that are Part of a Roaming-Group
+```ps1
+# Import Active directory Module
+Import-Module ActiveDirectory
+# Get all the members of roaming-group
+Get-ADGroupMember 'Group-A' |
+   # Loop through each user
+   ForEach-Object {
+     # Update for each User. SamAccountName is an attribute of the user.
+     # Instead of writing "\\\ad-server-2\Share-A\%username%" we use + and the user name (same as SamAccountName)
+     Set-ADUser -Identity $_.SamAccountName -ProfilePath ("\\\ad-server-2\Share-A\" + $_.SamAccountName)
+   }
+```
