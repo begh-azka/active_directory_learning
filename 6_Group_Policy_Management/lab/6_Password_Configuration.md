@@ -12,3 +12,5 @@
   - Account Lockout Threshold (5 invalid logon attempts)
   - Reset Account Lockout Counter after (10 min)
 - Go to **Security Settings -> Local Policies -> Security Options** and enable **Interactive Logon: Prompt User to change password before expiration** (14 days before)
+- Finally, update GPO using cmd, run **`gpupdate /force`**
+- On the next logon, changes will be effective.
