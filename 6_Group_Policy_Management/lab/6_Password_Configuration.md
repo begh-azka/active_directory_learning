@@ -2,12 +2,14 @@
 
 - In Group Policy Management, create a new GPO.
 - Go to **Computer Configuration -> Policies -> Windows Settings -> Security Settings -> Account Policies -> Password Policy**
-- Here enable the below settings and change the value as you desire:
+- In **Password Policy** enable the below settings and change the value as you desire:
+  - Enforce Password History (remeber 5 or so passwords)) 
   - Minimum Password Age (0!)
   - Maximum Password Age (90!)
   - Minimum Password length (10)
   - Password Must Meet Complexity Requirements (one uppercase letter, a special character, a number etc)
-- Next go to Account Lockout Policy in Account Policies and enable:
+  - Store passwords using reversible encryption -> Disabled (It will store passwords in clear text so it should be disabled)
+- Next go to **Account Lockout Policy** in Account Policies and enable:
   - Account Lockout Duration (60 min or something)
   - Account Lockout Threshold (5 invalid logon attempts)
   - Reset Account Lockout Counter after (10 min)
