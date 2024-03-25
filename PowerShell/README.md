@@ -1,5 +1,5 @@
 # PowerShell Commands for AD
-
+## User
 ### To Get Help
 ```ps1
 Get-Help Set-ADUser
@@ -39,20 +39,7 @@ The Value inside SearchBase comes from **OU -> Properties -> Attributes Editor -
 ```ps1
 Get-ADUser -Filter * -SearchBase "OU=Domain Users, OU=azka, DC=azka, DC=local" | Select-Object Name
 ```
-### To List Users in a Specific Group along with their Attributes
-```ps1
-Get-ADGroupMember 'Group-A' | Select-Object Name, DistinguishedName
-Get-ADGroupMember -Identity "The Office" | ft
-```
-### To Export a Large List of Users and their Attributes to a csv File
-```ps1
-Get-ADGroupMember 'Group-B' | Select-Object Name, DistinguishedName | Export-Csv "C:\Users\azka.aslam\Desktop\myusers.csv"
-```
-### Add Users to a Group (user identity should always be logon name unless Name is specified)
-```ps1
-Add-ADGroupMember Group-A -Members "rukhsana.jabeen"
-Add-ADGroupMember "Group-B" Jason-Bourne,Benedict.Cumberbatch,AbbeyCrawford,AbbeyEckels (Bulk Adding)
-```
+
 ### To List All the Locked Accounts
 ```ps1
 Search-ADAccount -AccountDisabled | Select-Object Name 
@@ -91,13 +78,40 @@ New-ADUser `
     -DisplayName "Brad Cooper"
 ```
 Here we have not mentioned -ChangePasswordAtLogon 1, so it is disabled by default
-
+## Groups
+### To List Users in a Specific Group along with their Attributes
+```ps1
+Get-ADGroupMember 'Group-A' | Select-Object Name, DistinguishedName
+Get-ADGroupMember -Identity "The Office" | ft
+```
+### To Export a Large List of Users and their Attributes to a csv File
+```ps1
+Get-ADGroupMember 'Group-B' | Select-Object Name, DistinguishedName | Export-Csv "C:\Users\azka.aslam\Desktop\myusers.csv"
+```
+### Add Users to a Group (user identity should always be logon name unless Name is specified)
+```ps1
+Add-ADGroupMember Group-A -Members "rukhsana.jabeen"
+Add-ADGroupMember "Group-B" Jason-Bourne,Benedict.Cumberbatch,AbbeyCrawford,AbbeyEckels (Bulk Adding)
+```
+## GPO
+### Getting GPO of a Single Domain
+```ps1
+Get-GPO -Name "Group Policy Test"
+```
 ### Creating GPO
 ```ps1
 New-GPO -Name "First-GPO" -StarterGPOName "Windows Vista EC Computer Starter GPO"
 ```
-### Creating GPO and Linking it with Domain
+### Creating GPO and Linking it with Domain and Setting Permission
 ```ps1
 # This command creates a GPO named Test-GPO, links it to the azka OU in the azka.local domain, and grants the Marketing Admins security group permissions to edit the GPO.
 New-GPO -Name Test-GPO | New-GPLink -Target "ou=azka,dc=azka,dc=local" | Set-GPPermissions -PermissionLevel gpoedit -TargetName "Marketing Admins" -TargetType Group
+```
+### Setting a GPO Link
+```ps1
+Set-GPLink -Name First-GPO -Target "ou=azka,dc=azka,dc=local" -LinkEnabled Yes
+```
+### Setting GPO Permission 
+```ps1
+Set-GPPermission -Name First-GPO -TargetName "Domain Users" -TargetType Group -PermissionLevel GpoRead
 ```
