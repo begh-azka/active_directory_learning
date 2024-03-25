@@ -1,5 +1,5 @@
 # Configuring Roaming Profiles for Users 
-
+### Steps
 - Go to Server Manager and on the left side is an option **File and Storage Services**.
 - Open Shares.
 - Right click in the middle and select New Share.
