@@ -19,5 +19,5 @@ New-ADUser `
     -Path "OU=Domain Users, OU=azka, DC=azka, DC=local" `
     -Enabled 1 `
     -DisplayName "$displayName" `
-    -SamAccountName "$logonName"
-  
+    -SamAccountName "$logonName" `
+    -EmailAddress "$emailAddr" 
