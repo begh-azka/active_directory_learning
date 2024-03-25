@@ -42,10 +42,16 @@ Get-ADUser -Filter * -SearchBase "OU=Domain Users, OU=azka, DC=azka, DC=local" |
 ### To List Users in a Specific Group along with their Attributes
 ```ps1
 Get-ADGroupMember 'Group-A' | Select-Object Name, DistinguishedName
+Get-ADGroupMember -Identity "The Office" | ft
 ```
 ### To Export a Large List of Users and their Attributes to a csv File
 ```ps1
 Get-ADGroupMember 'Group-B' | Select-Object Name, DistinguishedName | Export-Csv "C:\Users\azka.aslam\Desktop\myusers.csv"
+```
+### Add Users to a Group (user identity should always be logon name unless Name is specified)
+```ps1
+Add-ADGroupMember Group-A -Members "rukhsana.jabeen"
+Add-ADGroupMember "Group-B" Jason-Bourne,Benedict.Cumberbatch,AbbeyCrawford,AbbeyEckels (Bulk Adding)
 ```
 ### To List All the Locked Accounts
 ```ps1
@@ -86,4 +92,12 @@ New-ADUser `
 ```
 Here we have not mentioned -ChangePasswordAtLogon 1, so it is disabled by default
 
-### 
+### Creating GPO
+```ps1
+New-GPO -Name "First-GPO" -StarterGPOName "Windows Vista EC Computer Starter GPO"
+```
+### Creating GPO and Linking it with Domain
+```ps1
+# This command creates a GPO named Test-GPO, links it to the azka OU in the azka.local domain, and grants the Marketing Admins security group permissions to edit the GPO.
+New-GPO -Name Test-GPO | New-GPLink -Target "ou=azka,dc=azka,dc=local" | Set-GPPermissions -PermissionLevel gpoedit -TargetName "Marketing Admins" -TargetType Group
+```
