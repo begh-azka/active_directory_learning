@@ -78,7 +78,15 @@ New-ADUser `
     -DisplayName "Brad Cooper"
 ```
 Here we have not mentioned -ChangePasswordAtLogon 1, so it is disabled by default
+## Computers
+```ps1
+New-ADComputer -Name "New-Windows" -SamAccountName "New-Windows" -Path "OU=ApplicationServers,OU=ComputerAccounts,OU=Managed,DC=azka,DC=local"
+```
 ## Groups
+### Create a New Group
+```ps1
+New-ADGroup -Name "RODC Admins" -SamAccountName RODCAdmins -GroupCategory Security -GroupScope Global -DisplayName "RODC Administrators" -Path "CN=Users,DC=azka,DC=local" -Description "Members of this group are RODC Administrators"
+```
 ### To List Users in a Specific Group along with their Attributes
 ```ps1
 Get-ADGroupMember 'Group-A' | Select-Object Name, DistinguishedName
